@@ -1,0 +1,15 @@
+[project]
+name = "projeto-final-md"
+version = "0.1.0"
+description = "Projeto final da disciplina Mineração de Dados"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "gdown>=5.2.0",
+  "kagglehub>=0.3.12",
+  "matplotlib>=3.10.1",
+  "numpy>=2.2.5",
+  "pandas>=2.2.3",
+  "scikit-learn>=1.6.1",
+  "tqdm>=4.67.1",
+]

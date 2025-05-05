@@ -6,12 +6,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from tqdm import tqdm
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, accuracy_score, silhouette_score
 from sklearn.cluster import DBSCAN, HDBSCAN
-
-DEFAULT_CSV = Path("creditcard_modified.csv")
 
 
 def carregar_csv(caminho: Path) -> tuple[np.ndarray, np.ndarray]:
@@ -77,18 +74,62 @@ def plotar_matriz(cm: np.ndarray, titulo: str) -> None:
     plt.tight_layout()
 
 
+def plotar_comparacao(resultados: list[dict]) -> None:
+
+    nomes = [r["nome"] for r in resultados]
+
+    acuracias = [r["acuracia"] for r in resultados]
+
+    silhuetas = [r["silhueta"] for r in resultados]
+
+    x = np.arange(len(nomes))
+
+    largura = 0.35
+
+    fig, ax = plt.subplots()
+
+    ax.bar(x - largura / 2, acuracias, largura, label="Acurácia")
+
+    ax.bar(x + largura / 2, silhuetas, largura, label="Silhueta")
+
+    ax.set_ylabel("Pontuação")
+
+    ax.set_title("Comparação entre DBSCAN e HDBSCAN")
+
+    ax.set_xticks(x)
+
+    ax.set_xticklabels(nomes)
+
+    ax.legend()
+
+    plt.tight_layout()
+
+    plt.show()
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Comparação DBSCAN vs HDBSCAN (CATS)")
-    parser.add_argument("--arquivo", type=Path, default=DEFAULT_CSV, help="Caminho do CSV")
+    parser.add_argument(
+        "--arquivo",
+        type=Path,
+        default="./datasets/creditcardfraud_modified.csv",
+        help="Caminho do CSV",
+    )
     parser.add_argument("--eps", type=float, default=0.5, help="eps para DBSCAN")
-    parser.add_argument("--min_samples", type=int, default=5, help="min_samples para DBSCAN")
-    parser.add_argument("--min_cluster_size", type=int, default=5, help="min_cluster_size para HDBSCAN")
+    parser.add_argument(
+        "--min_samples", type=int, default=5, help="min_samples para DBSCAN"
+    )
+    parser.add_argument(
+        "--min_cluster_size", type=int, default=5, help="min_cluster_size para HDBSCAN"
+    )
     args = parser.parse_args(argv)
 
     X, y_true = carregar_csv(args.arquivo)
 
     print("Rodando DBSCAN…")
-    db_pred = DBSCAN(eps=args.eps, min_samples=args.min_samples, n_jobs=-1).fit_predict(X)
+    db_pred = DBSCAN(eps=args.eps, min_samples=args.min_samples, n_jobs=-1).fit_predict(
+        X
+    )
 
     print("Rodando HDBSCAN…")
     hdb_pred = HDBSCAN(min_cluster_size=args.min_cluster_size, n_jobs=-1).fit_predict(X)
@@ -103,6 +144,8 @@ def main(argv: list[str] | None = None) -> None:
         plt.subplot(1, 2, i)
         plotar_matriz(res["matriz"], res["nome"])
     plt.show()
+
+    plotar_comparacao(resultados)
 
 
 if __name__ == "__main__":
