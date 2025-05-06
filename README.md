@@ -12,8 +12,6 @@ Este projeto realiza a detecção de anomalias (fraudes) em transações finance
 - **Instalação e Configuração**
 - **Uso e Execução**
 - **Parâmetros Opcionais**
-- **Saída Esperada**
-- **Estrutura do Projeto**
 - **Dependências**
 - **Autores e Licença**
 
