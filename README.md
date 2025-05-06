@@ -54,9 +54,19 @@ Este projeto realiza a detecção de anomalias (fraudes) em transações finance
 
 Execute o código diretamente via `uv`:
 
-```bash
-uv run src/main.py
-```
+1. Carregando o dataset:
+
+   ```bash
+   uv run src/load_dataset.py
+   ```
+
+   > Também disponível no [drive](https://drive.google.com/file/d/180hGFlu-bf7h6oGDBV3UCVAPRWU3jH7l/view?usp=sharing).
+
+2. Executando o código principal:
+
+   ```bash
+   uv run src/main.py
+   ```
 
 ---
 
@@ -93,4 +103,3 @@ Instituição: Universidade Federal de Uberlândia - UFU
 Ano: 2025
 
 Alunos: Enzo Lazzarini, João Lucas, João Pedro, Thiago Pacheco e Wallace Geraldo
-
