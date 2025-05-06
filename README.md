@@ -23,7 +23,6 @@ Este projeto realiza a detecção de anomalias (fraudes) em transações finance
 
 - Ubuntu 20.04+
 - Python 3.9+
-- Permissões de `sudo` para instalar pacotes via `apt`
 
 ---
 
@@ -35,7 +34,7 @@ Este projeto realiza a detecção de anomalias (fraudes) em transações finance
    curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
-   > Este comando baixa e executa um script de instalação diretamente do site oficial.
+   > Este comando baixa e executa um script de instalação diretamente do site [oficial](https://astral.sh/blog/uv).
 
 2. **Verifique a instalação:**
 
