@@ -89,6 +89,10 @@ Listadas em `requirements.txt`:
 ## Autores
 
 Trabalho final da disciplina de **Mineração de Dados**
+
 Instituição: Universidade Federal de Uberlândia - UFU
+
 Ano: 2025
+
 Alunos: Enzo Lazzarini, João Lucas, João Pedro, Thiago Pacheco e Wallace Geraldo
+
