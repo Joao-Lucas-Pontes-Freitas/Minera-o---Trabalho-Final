@@ -13,7 +13,7 @@ Este projeto realiza a detecção de anomalias (fraudes) em transações finance
 - **Uso e Execução**
 - **Parâmetros Opcionais**
 - **Dependências**
-- **Autores e Licença**
+- **Autores**
 
 ---
 
