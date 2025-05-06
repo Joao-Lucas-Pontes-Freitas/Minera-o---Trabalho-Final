@@ -1,77 +1,95 @@
-# Trabalho Final - Mneração
+# Trabalho Final – Mineração de Dados
 
-# DBSCAN vs HDBSCAN
+## Comparativo DBSCAN vs HDBSCAN na Detecção de Fraudes
 
-Comparativo de **DBSCAN** e **HDBSCAN** para detecção de anomalias no dataset de Fraude de Cartão de Crédito.
-
----
-
-## Sumário rápido
-
-1. Instalar dependências
-2. Garantir que `dataset.csv` esteja na pasta
-3. Executar `python anomalias.py`
-4. Analisar métricas e gráficos
+Este projeto realiza a detecção de anomalias (fraudes) em transações financeiras, comparando os algoritmos **DBSCAN** e **HDBSCAN** sobre o dataset de Fraude de Cartão de Crédito.
 
 ---
 
-## 1 – Requisitos
+## Sumário
 
-| Pacote       | Versão mínima |
-| ------------ | ------------- |
-| Python       | 3.9 +         |
-| scikit‑learn | 1.4 +         |
+- **Requisitos do Sistema**
+- **Instalação e Configuração**
+- **Uso e Execução**
+- **Parâmetros Opcionais**
+- **Saída Esperada**
+- **Estrutura do Projeto**
+- **Dependências**
+- **Autores e Licença**
 
-Dependências Python:
+---
+
+## Requisitos do Sistema
+
+- Ubuntu 20.04+
+- Python 3.9+
+- Permissões de `sudo` para instalar pacotes via `apt`
+
+---
+
+## Instalação e Configuração
+
+1. **Instale o UV:**
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+   > Este comando baixa e executa um script de instalação diretamente do site oficial.
+
+2. **Verifique a instalação:**
+
+   ```bash
+   which uv
+   ```
+
+3. **Atualize as dependências:**
+
+   ```bash
+   uv sync
+   ```
+
+   > Informações estão no `pyproject.toml`.
+
+---
+
+## Uso e Execução
+
+Execute o código diretamente via `uv`:
 
 ```bash
-pip install pandas numpy matplotlib scikit-learn tqdm
+uv run src/main.py
 ```
 
 ---
 
-## 2 – Colocar o dataset
+## Parâmetros Opcionais
 
-Copie ou mova seu arquivo **dataset.csv** (exportado do CATS) para a pasta do projeto:
-
-```
-./
-├─ anomalias.py
-├─ creditcard_modified.csv        
-└─ README.md
-```
-
-O CSV deve conter pelo menos:
-
-* Coluna **`y`** (1 = anomalia, 0 = normal)
-* Demais colunas numéricas que serão usadas como features
-
----
-
-## 3 – Executar
+Você pode ajustar os algoritmos usando flags:
 
 ```bash
-python anomalias.py                  # usa dataset.csv padrão
+uv run src/main.py \
+  --arquivo datasets/outro.csv \
+  --eps 0.3 \
+  --min_samples 10 \
+  --min_cluster_size 25
 ```
 
-### Parâmetros opcionais
-
-```bash
-python anomalias.py --arquivo outro.csv --eps 0.3 --min_samples 10 --min_cluster_size 25
-```
-
-* `--arquivo` → CSV customizado
-* `--eps` & `--min_samples` → DBSCAN
-* `--min_cluster_size` → HDBSCAN
+- `--arquivo` → caminho para um CSV alternativo (padrão: `datasets/creditcardfraud_modified.csv`)
+- `--eps`, `--min_samples` → parâmetros do **DBSCAN**
+- `--min_cluster_size` → parâmetro do **HDBSCAN**
 
 ---
 
-## 4 – Saída esperada
+## Dependências
 
-1. Impressão na tela de:
-
-   * **Matriz de Confusão** (2×2)
-   * **Acurácia**
-   * **Coeficiente de Silhueta**
+Listadas em `requirements.txt`:
 
 ---
+
+## Autores
+
+Trabalho final da disciplina de **Mineração de Dados**
+Instituição: Universidade Federal de Uberlândia - UFU
+Ano: 2025
+Alunos: Enzo Lazzarini, João Lucas, João Pedro, Thiago Pacheco e Wallace Geraldo
