@@ -52,21 +52,35 @@ Este projeto realiza a detecção de anomalias (fraudes) em transações finance
 
 ## Uso e Execução
 
-Execute o código diretamente via `uv`:
+1. **Primeira opção: script `run.sh`.**
 
-1. Carregando o dataset:
+- Permissões de execução:
 
-   ```bash
-   uv run src/load_dataset.py
-   ```
+```bash
+chmod +x run.sh
+```
 
-   > Também disponível no [drive](https://drive.google.com/file/d/180hGFlu-bf7h6oGDBV3UCVAPRWU3jH7l/view?usp=sharing).
+- Executar:
 
-2. Executando o código principal:
+```bash
+./run.sh
+```
 
-   ```bash
-   uv run src/main.py
-   ```
+2. **Segunda opção: execute o código diretamente via `uv`.**
+
+- Carregando o dataset:
+
+```bash
+uv run src/load_dataset.py
+```
+
+> Também disponível no [drive](https://drive.google.com/file/d/180hGFlu-bf7h6oGDBV3UCVAPRWU3jH7l/view?usp=sharing).
+
+- Executando o código principal:
+
+```bash
+uv run src/main.py
+```
 
 ---
 
