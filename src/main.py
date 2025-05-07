@@ -67,7 +67,7 @@ def plot_kdistance_curve(X: np.ndarray, k: int = 5, n_max: int = 10_000) -> None
 
 
 # ============================================================
-# 2) MINERAÇÃO DE DADOS  (mesmo de antes)
+# 2) MINERAÇÃO DE DADOS
 # ============================================================
 
 
@@ -126,7 +126,7 @@ def avaliar_hdbscan(X, y_true, min_cluster_size, q_out):
 
 
 # ============================================================
-# 3) PÓS-PROCESSAMENTO  (idêntico ao anterior)
+# 3) PÓS-PROCESSAMENTO
 # ============================================================
 
 
@@ -207,7 +207,7 @@ def main(argv: List[str] | None = None) -> None:
     # Curva k-distance + eps
     eps = sugerir_eps_kdistance(X)
     print(f"[info] eps escolhido (mediana + σ): {eps:.4f}")
-    plot_kdistance_curve(X, k=5)  # sempre mostra
+    #plot_kdistance_curve(X, k=5)
 
     # ── Mineração de Dados ───────────────────────────────────
     db = avaliar_dbscan(X, y_true, eps, min_samples=X.shape[1] * 2)
