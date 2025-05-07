@@ -132,7 +132,7 @@ def avaliar_hdbscan(X, y_true, min_cluster_size, q_out):
 
 def plot_matriz(cm, titulo, ax=None):
     """
-    Plota matriz de confusão em ax. Se ax for None, cria um novo.
+    Plota matriz de confusão
     """
     # 1) Cria axes se não foi passado
     if ax is None:
@@ -154,7 +154,7 @@ def plot_matriz(cm, titulo, ax=None):
 
 def plot_pr(resultados, y_true, ax=None):
     """
-    Plota curvas Precision-Recall em ax. Se ax for None, cria um novo.
+    Plota curvas Precision-Recall
     """
     if ax is None:
         fig, ax = plt.subplots(figsize=(6, 5))
@@ -171,7 +171,7 @@ def plot_pr(resultados, y_true, ax=None):
 
 def plot_barras(resultados, ax=None):
     """
-    Plota barras de F1 x AUPRC em ax. Se ax for None, cria um novo.
+    Plota barras de F1 x AUPRC
     """
     if ax is None:
         fig, ax = plt.subplots(figsize=(6, 4))
