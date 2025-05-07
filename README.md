@@ -68,12 +68,11 @@ chmod +x run.sh
 
 2. **Segunda opção: execute o código diretamente via `uv`.**
 
-- Carregando o dataset:
+- Carrega o CSV modificado da Dataset Credit Card Fraud Detection sem as colunas Amount e Time:
 
 ```bash
 uv run src/load_dataset.py
 ```
-
 > Também disponível no [drive](https://drive.google.com/file/d/180hGFlu-bf7h6oGDBV3UCVAPRWU3jH7l/view?usp=sharing).
 
 - Executando o código principal:
@@ -90,7 +89,7 @@ Você pode ajustar os algoritmos usando flags:
 
 ```bash
 uv run src/main.py \
-  --arquivo datasets/outro.csv \
+  --arquivo datasets/outro.csv \ (CSV modificado da Dataset Credit Card Fraud Detection sem as colunas Amount e Time)
   --eps 0.3 \
   --min_samples 10 \
   --min_cluster_size 25
