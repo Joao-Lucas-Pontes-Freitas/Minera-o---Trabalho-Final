@@ -1,7 +1,7 @@
 from __future__ import annotations
 import argparse
 from pathlib import Path
-from typing import List, Tuple, Dict
+from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
@@ -24,7 +24,7 @@ from sklearn.cluster import DBSCAN, HDBSCAN
 # 1) PRÉ-PROCESSAMENTO
 # ============================================================
 
-
+# Carrega o CSV modificado da Dataset Credit Card Fraud Detection sem as colunas Amount e Time
 def carregar_csv(caminho: Path) -> Tuple[np.ndarray, np.ndarray]:
     df = pd.read_csv(caminho)
     df = df.sample(frac=1 / 1, random_state=42).reset_index(drop=True)
@@ -44,7 +44,7 @@ def sugerir_eps_kdistance(X: np.ndarray, k: int = 5) -> float:
 
 def plot_kdistance_curve(X: np.ndarray, k: int = 5, n_max: int = 10_000) -> None:
     """
-    Sempre exibe a curva k-distance em uma sub-amostra (≤ n_max) e
+    Exibe a curva k-distance em uma sub-amostra (≤ n_max) e
     destaca a linha 'mediana + σ' — valor usado como eps.
     """
     idx = np.random.choice(len(X), size=min(n_max, len(X)), replace=False)
@@ -134,10 +134,8 @@ def plot_matriz(cm, titulo, ax=None):
     """
     Plota matriz de confusão
     """
-    # 1) Cria axes se não foi passado
     if ax is None:
         fig, ax = plt.subplots()
-    # 2) Plota no ax fornecido
     im = ax.imshow(cm, cmap="Blues")
     ax.set_title(titulo)
     ax.set_xticks([0, 1])
@@ -147,7 +145,6 @@ def plot_matriz(cm, titulo, ax=None):
     for i in range(2):
         for j in range(2):
             ax.text(j, i, cm[i, j], ha="center", va="center")
-    # 3) Adiciona colorbar ao redor daquele ax
     ax.figure.colorbar(im, ax=ax, fraction=0.045)
     return ax
 
